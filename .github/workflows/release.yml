@@ -1,0 +1,23 @@
+name: Package and Release
+
+on:
+  push:
+    tags:
+    - 'v*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Linux
+      run: docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder rust-musl-builder cargo build --release
+    - name: Archive Linux build
+      uses: actions/upload-artifact@v2
+      with:
+        name: musl-test
+        path: target/x86_64-unknown-linux-musl/release/musl-test
+        retention-days: 5
