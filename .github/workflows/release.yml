@@ -24,6 +24,8 @@ jobs:
         path: target/x86_64-unknown-linux-musl/release/musl-test
         retention-days: 5
   release:
+    runs-on: ubuntu-latest
+    steps:
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
