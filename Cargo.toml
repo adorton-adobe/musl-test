@@ -1,6 +1,6 @@
 [package]
 name = "musl-test"
-version = "0.10.1"
+version = "0.10.2"
 authors = ["Andrew Dorton <adorton@adobe.com>"]
 edition = "2018"
 
